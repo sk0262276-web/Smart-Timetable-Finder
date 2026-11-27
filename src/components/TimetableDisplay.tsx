@@ -87,13 +87,16 @@ export function TimetableDisplay({
   if (submittedQuery) {
     selectedWeekday = getLocalWeekday(submittedQuery.date);
     hasSemesterData = timetableData.some(
-      (entry) => entry.semester === submittedQuery.semester
+      (entry) =>
+        entry.department === submittedQuery.department &&
+        entry.semester === submittedQuery.semester
     );
 
     if (hasSemesterData && selectedWeekday) {
       matchingClasses = timetableData
         .filter(
           (entry) =>
+            entry.department === submittedQuery.department &&
             entry.semester === submittedQuery.semester &&
             entry.day === selectedWeekday &&
             (entry.batch === 'Common' ||
@@ -239,9 +242,9 @@ export function TimetableDisplay({
                 <p className="mt-1.5 max-w-md text-sm leading-relaxed text-slate-500">
                   Timetable data for{' '}
                   <span className="font-semibold text-slate-700">
-                    {submittedQuery.semesterLabel}
+                    {submittedQuery.department} · {submittedQuery.semesterLabel}
                   </span>{' '}
-                  has not been added yet. Currently, only 3rd Semester CSE timetable entries are available.
+                  has not been added yet.
                 </p>
               </div>
             ) : matchingClasses.length === 0 ? (
@@ -258,7 +261,7 @@ export function TimetableDisplay({
                   <span className="font-semibold text-slate-700">
                     {selectedWeekday}
                   </span>{' '}
-                  in {submittedQuery.semesterLabel} ({submittedQuery.batchLabel}).
+                  in {submittedQuery.department} {submittedQuery.semesterLabel} ({submittedQuery.batchLabel}).
                 </p>
               </div>
             ) : (
@@ -269,8 +272,11 @@ export function TimetableDisplay({
                   </h3>
                   <span className="text-xs text-slate-500 tabular-nums">
                     {matchingClasses.length}{' '}
-                    {matchingClasses.length === 1 ? 'session' : 'sessions'} ·
-                    Recess 12:00 PM – 1:30 PM
+                    {matchingClasses.length === 1 ? 'session' : 'sessions'} ·{' '}
+                    {submittedQuery.department === 'CSE' &&
+                    submittedQuery.semester === '3'
+                      ? 'Recess 12:00 PM – 1:30 PM'
+                      : 'Recess 12:00 PM – 12:30 PM'}
                   </span>
                 </div>
 
@@ -299,6 +305,15 @@ export function TimetableDisplay({
                                 <span aria-hidden="true">·</span>
                                 <span className="font-mono font-medium text-slate-600">
                                   {entry.subjectCode}
+                                </span>
+                              </>
+                            )}
+
+                            {entry.isElectiveOption && (
+                              <>
+                                <span aria-hidden="true">·</span>
+                                <span className="font-medium text-amber-700">
+                                  Elective Option
                                 </span>
                               </>
                             )}
@@ -346,7 +361,9 @@ export function TimetableDisplay({
           </div>
 
           <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
-            <span>CSE Routine · {submittedQuery.semesterLabel}</span>
+            <span>
+              {submittedQuery.department} Routine · {submittedQuery.semesterLabel}
+            </span>
             <span className="tabular-nums">{submittedQuery.date}</span>
           </div>
         </div>

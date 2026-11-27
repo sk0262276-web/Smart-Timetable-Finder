@@ -2,7 +2,8 @@ import type { FormEvent } from 'react';
 import { AlertCircle, Calendar, Search } from 'lucide-react';
 import {
   DEPARTMENTS,
-  SEMESTERS,
+  getSemestersForDepartment,
+  isSemesterAvailableForDepartment,
   type BatchIdentificationMode,
   type BatchValue,
   type DepartmentCode,
@@ -38,9 +39,28 @@ export function TimetableFinderForm({
 }: TimetableFinderFormProps) {
   const todayIso = getOffsetIsoDate(0);
   const tomorrowIso = getOffsetIsoDate(1);
+  const availableSemesters = getSemestersForDepartment(formState.department);
 
   const handleDepartmentChange = (department: DepartmentCode) => {
-    onChange((prev) => ({ ...prev, department }));
+    onClearError('semester');
+    onClearError('batch');
+    onChange((prev) => {
+      const nextSemester = isSemesterAvailableForDepartment(
+        department,
+        prev.semester
+      )
+        ? prev.semester
+        : '';
+
+      return {
+        ...prev,
+        department,
+        semester: nextSemester,
+        batchMode: 'manual',
+        manualBatch: '',
+        rollNumber: '',
+      };
+    });
   };
 
   const handleSemesterChange = (semester: SemesterValue | '') => {
@@ -49,7 +69,8 @@ export function TimetableFinderForm({
     onChange((prev) => ({
       ...prev,
       semester,
-      batchMode: semester === '7' ? 'manual' : prev.batchMode,
+      batchMode:
+        prev.department === 'IT' || semester === '7' ? 'manual' : prev.batchMode,
     }));
   };
 
@@ -101,7 +122,7 @@ export function TimetableFinderForm({
             >
               Department
             </label>
-            <span className="text-xs text-slate-500">Version 1 · CSE Focus</span>
+            <span className="text-xs text-slate-500">CSE &amp; IT</span>
           </div>
           <select
             id="department-select"
@@ -144,7 +165,7 @@ export function TimetableFinderForm({
             }`}
           >
             <option value="">Select semester</option>
-            {SEMESTERS.map((sem) => (
+            {availableSemesters.map((sem) => (
               <option key={sem.value} value={sem.value}>
                 {sem.label}
               </option>
@@ -167,6 +188,7 @@ export function TimetableFinderForm({
 
         {/* Batch Identification (Manual or Roll Number) */}
         <BatchSelector
+          department={formState.department}
           semester={formState.semester}
           mode={formState.batchMode}
           manualBatch={formState.manualBatch}

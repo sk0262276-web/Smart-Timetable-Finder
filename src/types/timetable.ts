@@ -1,4 +1,6 @@
-export type DepartmentCode = 'CSE';
+export type Department = 'CSE' | 'IT';
+
+export type DepartmentCode = Department;
 
 export type SemesterValue = '3' | '5' | '7';
 
@@ -34,14 +36,26 @@ export interface BatchIdentificationResult {
   error?: string;
 }
 
-export function supportsAutomaticBatch(semester: SemesterValue | ''): boolean {
-  return semester === '3' || semester === '5';
+export function supportsAutomaticBatch(
+  semester: SemesterValue | '',
+  department: DepartmentCode = 'CSE'
+): boolean {
+  return department === 'CSE' && (semester === '3' || semester === '5');
 }
 
 export function identifyBatchFromRollNumber(
   semester: SemesterValue | '',
-  rawRollNumber: string
+  rawRollNumber: string,
+  department: DepartmentCode = 'CSE'
 ): BatchIdentificationResult {
+  if (department !== 'CSE') {
+    return {
+      batch: null,
+      error:
+        'Automatic roll number lookup is not available for IT Department yet. Please select Batch I or Batch II manually.',
+    };
+  }
+
   const trimmed = rawRollNumber.trim();
 
   if (!trimmed) {
@@ -145,6 +159,10 @@ export const DEPARTMENTS: ReadonlyArray<{ code: DepartmentCode; label: string }>
     code: 'CSE',
     label: 'Computer Science and Engineering (CSE)',
   },
+  {
+    code: 'IT',
+    label: 'Information Technology (IT)',
+  },
 ];
 
 export const SEMESTERS: ReadonlyArray<{ value: SemesterValue; label: string }> = [
@@ -152,5 +170,28 @@ export const SEMESTERS: ReadonlyArray<{ value: SemesterValue; label: string }> =
   { value: '5', label: '5th Semester' },
   { value: '7', label: '7th Semester' },
 ];
+
+export const DEPARTMENT_SEMESTERS: Record<
+  DepartmentCode,
+  ReadonlyArray<SemesterValue>
+> = {
+  CSE: ['3', '5', '7'],
+  IT: ['3'],
+};
+
+export function getSemestersForDepartment(
+  department: DepartmentCode
+): ReadonlyArray<{ value: SemesterValue; label: string }> {
+  const allowedSemesters = DEPARTMENT_SEMESTERS[department];
+  return SEMESTERS.filter((sem) => allowedSemesters.includes(sem.value));
+}
+
+export function isSemesterAvailableForDepartment(
+  department: DepartmentCode,
+  semester: SemesterValue | ''
+): semester is SemesterValue {
+  if (!semester) return false;
+  return DEPARTMENT_SEMESTERS[department].includes(semester);
+}
 
 export const BATCHES: ReadonlyArray<BatchValue> = ['Batch I', 'Batch II'];

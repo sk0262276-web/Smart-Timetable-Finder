@@ -5,10 +5,12 @@ import {
   OFFICIAL_ROLL_RANGES,
   type BatchIdentificationMode,
   type BatchValue,
+  type DepartmentCode,
   type SemesterValue,
 } from '../types/timetable';
 
 interface BatchSelectorProps {
+  department: DepartmentCode;
   semester: SemesterValue | '';
   mode: BatchIdentificationMode;
   manualBatch: BatchValue | '';
@@ -20,6 +22,7 @@ interface BatchSelectorProps {
 }
 
 export function BatchSelector({
+  department,
   semester,
   mode,
   manualBatch,
@@ -29,17 +32,20 @@ export function BatchSelector({
   onManualBatchChange,
   onRollNumberChange,
 }: BatchSelectorProps) {
-  const isSeventhSemester = semester === '7';
-  const activeMode: BatchIdentificationMode = isSeventhSemester
+  const isITDepartment = department === 'IT';
+  const isSeventhSemester = department === 'CSE' && semester === '7';
+  const isRollNumberDisabled = isITDepartment || isSeventhSemester;
+  const activeMode: BatchIdentificationMode = isRollNumberDisabled
     ? 'manual'
     : mode;
 
   const liveMatch =
     activeMode === 'rollNumber' && rollNumber.trim() !== ''
-      ? identifyBatchFromRollNumber(semester, rollNumber)
+      ? identifyBatchFromRollNumber(semester, rollNumber, department)
       : null;
 
-  const semesterRanges = semester ? OFFICIAL_ROLL_RANGES[semester] : undefined;
+  const semesterRanges =
+    department === 'CSE' && semester ? OFFICIAL_ROLL_RANGES[semester] : undefined;
   const rollPlaceholder =
     semester === '5' ? 'e.g., 11000124001' : 'e.g., 11000125001';
 
@@ -50,9 +56,11 @@ export function BatchSelector({
           Batch Identification
         </span>
         <span className="text-xs text-slate-500">
-          {isSeventhSemester
-            ? 'Manual selection required for 7th Semester'
-            : 'Choose manually or enter your roll number'}
+          {isITDepartment
+            ? 'Manual selection required for IT Department'
+            : isSeventhSemester
+              ? 'Manual selection required for 7th Semester'
+              : 'Choose manually or enter your roll number'}
         </span>
       </div>
 
@@ -81,12 +89,14 @@ export function BatchSelector({
           type="button"
           role="tab"
           aria-selected={activeMode === 'rollNumber'}
-          disabled={isSeventhSemester}
+          disabled={isRollNumberDisabled}
           onClick={() => onModeChange('rollNumber')}
           title={
-            isSeventhSemester
-              ? 'Automatic roll number identification is not available for 7th Semester'
-              : undefined
+            isITDepartment
+              ? 'Automatic roll number identification is not available for IT Department yet'
+              : isSeventhSemester
+                ? 'Automatic roll number identification is not available for 7th Semester'
+                : undefined
           }
           className={`flex min-h-[40px] items-center justify-center gap-2 rounded-md px-3 py-2 text-xs font-semibold transition-colors duration-150 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:opacity-45 ${
             activeMode === 'rollNumber'
@@ -139,6 +149,12 @@ export function BatchSelector({
               );
             })}
           </div>
+
+          {isITDepartment && (
+            <p className="text-xs text-slate-500">
+              Automatic roll number lookup is not available for IT Department yet, so please select Batch I or Batch II manually.
+            </p>
+          )}
 
           {isSeventhSemester && (
             <p className="text-xs text-slate-500">

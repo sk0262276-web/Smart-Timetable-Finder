@@ -1,3 +1,7 @@
+import type { Department } from '../types/timetable';
+
+export type { Department };
+
 export type TimetableDay =
   | 'Monday'
   | 'Tuesday'
@@ -11,6 +15,7 @@ export type TimetableSemester = '3' | '5' | '7';
 export type TimetableBatch = 'Common' | 'Batch I' | 'Batch II';
 
 export interface TimetableEntry {
+  department: Department;
   day: TimetableDay;
   semester: TimetableSemester;
   startTime: string; // 24-hour HH:mm
@@ -24,8 +29,10 @@ export interface TimetableEntry {
 }
 
 export const timetableData: TimetableEntry[] = [
+  // CSE — 3RD SEMESTER
   // MONDAY
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '3',
     startTime: '10:00',
@@ -37,6 +44,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '3',
     startTime: '13:30',
@@ -48,6 +56,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-1',
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '3',
     startTime: '13:30',
@@ -61,6 +70,7 @@ export const timetableData: TimetableEntry[] = [
 
   // TUESDAY
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '3',
     startTime: '10:00',
@@ -72,6 +82,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '3',
     startTime: '13:30',
@@ -83,6 +94,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-1',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '3',
     startTime: '13:30',
@@ -96,6 +108,7 @@ export const timetableData: TimetableEntry[] = [
 
   // WEDNESDAY
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '3',
     startTime: '10:00',
@@ -107,6 +120,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '3',
     startTime: '11:00',
@@ -118,6 +132,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '3',
     startTime: '13:30',
@@ -129,6 +144,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-CO',
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '3',
     startTime: '13:30',
@@ -142,6 +158,7 @@ export const timetableData: TimetableEntry[] = [
 
   // THURSDAY
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '3',
     startTime: '10:00',
@@ -153,6 +170,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-LT',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '3',
     startTime: '11:00',
@@ -164,6 +182,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-LT',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '3',
     startTime: '13:30',
@@ -175,6 +194,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-CO',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '3',
     startTime: '13:30',
@@ -188,6 +208,7 @@ export const timetableData: TimetableEntry[] = [
 
   // FRIDAY
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '3',
     startTime: '10:00',
@@ -199,6 +220,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '3',
     startTime: '11:00',
@@ -210,6 +232,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-LT',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '3',
     startTime: '13:30',
@@ -221,6 +244,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-LT',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '3',
     startTime: '14:30',
@@ -234,6 +258,7 @@ export const timetableData: TimetableEntry[] = [
 
   // SATURDAY
   {
+    department: 'CSE',
     day: 'Saturday',
     semester: '3',
     startTime: '10:00',
@@ -245,9 +270,10 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-8',
   },
 
-  // 5TH SEMESTER
+  // CSE — 5TH SEMESTER
   // MONDAY
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '5',
     startTime: '10:00',
@@ -259,6 +285,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '5',
     startTime: '12:30',
@@ -270,6 +297,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'LL',
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '5',
     startTime: '12:30',
@@ -283,6 +311,7 @@ export const timetableData: TimetableEntry[] = [
 
   // TUESDAY
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '5',
     startTime: '10:00',
@@ -294,6 +323,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '5',
     startTime: '11:00',
@@ -305,6 +335,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '5',
     startTime: '12:30',
@@ -316,6 +347,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '5',
     startTime: '13:30',
@@ -327,6 +359,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-1',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '5',
     startTime: '15:30',
@@ -340,6 +373,7 @@ export const timetableData: TimetableEntry[] = [
 
   // WEDNESDAY
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '5',
     startTime: '10:00',
@@ -352,6 +386,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '5',
     startTime: '10:00',
@@ -364,6 +399,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '5',
     startTime: '10:00',
@@ -376,6 +412,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '5',
     startTime: '12:30',
@@ -387,6 +424,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '5',
     startTime: '14:30',
@@ -400,6 +438,7 @@ export const timetableData: TimetableEntry[] = [
 
   // THURSDAY
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '5',
     startTime: '10:00',
@@ -411,6 +450,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '5',
     startTime: '12:30',
@@ -422,6 +462,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-2',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '5',
     startTime: '12:30',
@@ -435,6 +476,7 @@ export const timetableData: TimetableEntry[] = [
 
   // FRIDAY
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '10:00',
@@ -446,6 +488,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-1',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '11:00',
@@ -458,6 +501,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '11:00',
@@ -470,6 +514,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '11:00',
@@ -482,6 +527,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '12:30',
@@ -493,6 +539,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'L-1',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '5',
     startTime: '12:30',
@@ -506,6 +553,7 @@ export const timetableData: TimetableEntry[] = [
 
   // SATURDAY
   {
+    department: 'CSE',
     day: 'Saturday',
     semester: '5',
     startTime: '10:00',
@@ -517,6 +565,7 @@ export const timetableData: TimetableEntry[] = [
     room: '',
   },
   {
+    department: 'CSE',
     day: 'Saturday',
     semester: '5',
     startTime: '11:00',
@@ -528,6 +577,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-7',
   },
   {
+    department: 'CSE',
     day: 'Saturday',
     semester: '5',
     startTime: '12:30',
@@ -539,9 +589,10 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-LT',
   },
 
-  // 7TH SEMESTER
+  // CSE — 7TH SEMESTER
   // MONDAY
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '7',
     startTime: '10:00',
@@ -554,6 +605,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '7',
     startTime: '10:00',
@@ -566,6 +618,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Monday',
     semester: '7',
     startTime: '12:30',
@@ -579,6 +632,7 @@ export const timetableData: TimetableEntry[] = [
 
   // TUESDAY
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '7',
     startTime: '10:00',
@@ -591,6 +645,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '7',
     startTime: '10:00',
@@ -603,6 +658,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '7',
     startTime: '12:30',
@@ -614,6 +670,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-1',
   },
   {
+    department: 'CSE',
     day: 'Tuesday',
     semester: '7',
     startTime: '13:30',
@@ -627,6 +684,7 @@ export const timetableData: TimetableEntry[] = [
 
   // WEDNESDAY
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '10:00',
@@ -639,6 +697,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '10:00',
@@ -651,6 +710,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '11:00',
@@ -662,6 +722,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-6',
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '12:30',
@@ -674,6 +735,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '12:30',
@@ -686,6 +748,7 @@ export const timetableData: TimetableEntry[] = [
     isElectiveOption: true,
   },
   {
+    department: 'CSE',
     day: 'Wednesday',
     semester: '7',
     startTime: '13:30',
@@ -699,6 +762,7 @@ export const timetableData: TimetableEntry[] = [
 
   // THURSDAY
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '7',
     startTime: '10:00',
@@ -710,6 +774,7 @@ export const timetableData: TimetableEntry[] = [
     room: '',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '7',
     startTime: '12:30',
@@ -721,6 +786,7 @@ export const timetableData: TimetableEntry[] = [
     room: '',
   },
   {
+    department: 'CSE',
     day: 'Thursday',
     semester: '7',
     startTime: '15:30',
@@ -734,6 +800,7 @@ export const timetableData: TimetableEntry[] = [
 
   // FRIDAY
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '7',
     startTime: '10:00',
@@ -745,6 +812,7 @@ export const timetableData: TimetableEntry[] = [
     room: 'R-6',
   },
   {
+    department: 'CSE',
     day: 'Friday',
     semester: '7',
     startTime: '12:30',
@@ -758,6 +826,7 @@ export const timetableData: TimetableEntry[] = [
 
   // SATURDAY
   {
+    department: 'CSE',
     day: 'Saturday',
     semester: '7',
     startTime: '10:00',
@@ -767,5 +836,258 @@ export const timetableData: TimetableEntry[] = [
     batch: 'Common',
     faculty: 'SM',
     room: 'R-LT',
+  },
+
+  // IT — 3RD SEMESTER
+  // MONDAY
+  {
+    department: 'IT',
+    day: 'Monday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '11:00',
+    subjectCode: 'PCC-CS301',
+    subjectName: 'Data Structure & Algorithm',
+    batch: 'Common',
+    faculty: 'PKK',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Monday',
+    semester: '3',
+    startTime: '11:00',
+    endTime: '12:00',
+    subjectCode: 'PCC-CS302',
+    subjectName: 'Computer Organization',
+    batch: 'Common',
+    faculty: 'SG',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Monday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS392',
+    subjectName: 'Computer Organization Lab',
+    batch: 'Batch I',
+    faculty: 'SG + SS',
+    room: 'Communication Engineering Lab',
+  },
+  {
+    department: 'IT',
+    day: 'Monday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS391',
+    subjectName: 'Data Structure & Algorithm Lab',
+    batch: 'Batch II',
+    faculty: 'PKK + BIM',
+    room: 'Central Lab',
+  },
+
+  // TUESDAY
+  {
+    department: 'IT',
+    day: 'Tuesday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '11:00',
+    subjectCode: 'ESC-301',
+    subjectName: 'Analog & Digital Electronics',
+    batch: 'Common',
+    faculty: 'TM',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Tuesday',
+    semester: '3',
+    startTime: '11:00',
+    endTime: '12:00',
+    subjectCode: 'PCC-CS302',
+    subjectName: 'Computer Organization',
+    batch: 'Common',
+    faculty: 'SS',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Tuesday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'ESC-391',
+    subjectName: 'Analog & Digital Electronics Lab',
+    batch: 'Batch I',
+    faculty: 'TM + SS',
+    room: 'Communication Engineering Lab',
+  },
+  {
+    department: 'IT',
+    day: 'Tuesday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS393',
+    subjectName: 'Python Lab',
+    batch: 'Batch II',
+    faculty: 'BB + PG',
+    room: 'Central Lab',
+  },
+
+  // WEDNESDAY
+  {
+    department: 'IT',
+    day: 'Wednesday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '12:00',
+    subjectCode: 'PCC-CS301',
+    subjectName: 'Data Structure & Algorithm',
+    batch: 'Common',
+    faculty: 'PKK',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Wednesday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS392',
+    subjectName: 'Computer Organization Lab',
+    batch: 'Batch II',
+    faculty: 'SG + SS',
+    room: 'Communication Engineering Lab',
+  },
+  {
+    department: 'IT',
+    day: 'Wednesday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS391',
+    subjectName: 'Data Structure & Algorithm Lab',
+    batch: 'Batch I',
+    faculty: 'PKK + KVK',
+    room: 'Central Lab',
+  },
+
+  // THURSDAY
+  {
+    department: 'IT',
+    day: 'Thursday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '11:00',
+    subjectCode: 'HSMC-301',
+    subjectName: 'Economics for Engineers',
+    batch: 'Common',
+    faculty: 'SMC',
+    room: 'LT',
+  },
+  {
+    department: 'IT',
+    day: 'Thursday',
+    semester: '3',
+    startTime: '11:00',
+    endTime: '12:00',
+    subjectCode: 'BSC-301',
+    subjectName: 'Mathematics III',
+    batch: 'Common',
+    faculty: 'PKM',
+    room: 'LT',
+  },
+  {
+    department: 'IT',
+    day: 'Thursday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'ESC-391',
+    subjectName: 'Analog & Digital Electronics Lab',
+    batch: 'Batch II',
+    faculty: 'TM + SS',
+    room: 'Communication Engineering Lab',
+  },
+  {
+    department: 'IT',
+    day: 'Thursday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '16:30',
+    subjectCode: 'PCC-CS393',
+    subjectName: 'Python Lab',
+    batch: 'Batch I',
+    faculty: 'BB + PG',
+    room: 'Central Lab',
+  },
+
+  // FRIDAY
+  {
+    department: 'IT',
+    day: 'Friday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '11:00',
+    subjectCode: 'PCC-CS302',
+    subjectName: 'Computer Organization',
+    batch: 'Common',
+    faculty: 'SG',
+    room: 'R-110',
+  },
+  {
+    department: 'IT',
+    day: 'Friday',
+    semester: '3',
+    startTime: '11:00',
+    endTime: '12:00',
+    subjectCode: 'BSC-301',
+    subjectName: 'Mathematics III',
+    batch: 'Common',
+    faculty: 'AKD',
+    room: 'LT',
+  },
+  {
+    department: 'IT',
+    day: 'Friday',
+    semester: '3',
+    startTime: '12:30',
+    endTime: '14:30',
+    subjectCode: 'HSMC-301',
+    subjectName: 'Economics for Engineers',
+    batch: 'Common',
+    faculty: 'SMC',
+    room: 'LT',
+  },
+  {
+    department: 'IT',
+    day: 'Friday',
+    semester: '3',
+    startTime: '14:30',
+    endTime: '16:30',
+    subjectCode: 'ESC-301',
+    subjectName: 'Analog & Digital Electronics',
+    batch: 'Common',
+    faculty: 'TM',
+    room: 'R-110',
+  },
+
+  // SATURDAY
+  {
+    department: 'IT',
+    day: 'Saturday',
+    semester: '3',
+    startTime: '10:00',
+    endTime: '12:00',
+    subjectCode: '',
+    subjectName: 'Library Work / Co-curricular Activities',
+    batch: 'Common',
+    faculty: '',
+    room: '',
   },
 ];
